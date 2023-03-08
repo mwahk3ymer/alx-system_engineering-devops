@@ -1,2 +1,2 @@
 #!/bin/bash
-cd .. mkdir -p copied_html_files
+cp -u *.html ..
