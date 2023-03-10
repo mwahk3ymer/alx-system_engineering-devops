@@ -1,2 +1,2 @@
 #!/bin/bash
-file -m school.mgc "$1"
+for file in "$@"; do file -m school.mgc "$file"; done
