@@ -1,0 +1,2 @@
+#!/bin/bash
+shopt -s globstar nullglob; for file in **/*.gif; do [[ -f "$file" ]] && echo "${file##*/}" | tr '[:upper:]' '[:lower:]' | rev | cut -c 5- | rev; done | LC_COLLATE=C sort -f | xargs -d '\n' -n 1 printf '%s\n'
