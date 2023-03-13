@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s\n" "$(find . -empty -printf "%P\n" | wc -l)" "$(find . -empty -printf "%P\n")"
+find . -empty | rev | cut -d '/' -f 1 | rev
