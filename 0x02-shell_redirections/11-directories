@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "The number of directories and sub-directories in the current directory is: $(find . -type d | wc -l)"
+find . -mindepth 1 -maxdepth 1 -type d -name '.*' -o -type d -printf '.' | wc -c
