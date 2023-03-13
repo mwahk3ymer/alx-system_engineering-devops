@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -f1 | sort | uniq -c | sort -rn | head -11 | while read count ip; do echo "$ip $count"; done
+cut -f1 $1 | sort | uniq -c | sort -nr | head -n11 | awk '{print $2}'
