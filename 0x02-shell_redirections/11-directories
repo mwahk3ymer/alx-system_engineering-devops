@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -d .*/ */ | wc -l
+echo $(find . -type d | wc -l) - 1 | bc
