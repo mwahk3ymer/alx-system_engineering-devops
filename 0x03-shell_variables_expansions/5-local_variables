@@ -1,2 +1,2 @@
 #!/bin/bash
-env | grep -E '^BASH=|^BASHOPTS=' | tr '\n' ' '
+declare -p; typeset -f
