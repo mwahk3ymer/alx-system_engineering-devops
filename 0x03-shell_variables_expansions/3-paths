@@ -1,2 +1,2 @@
 #!/bin/bash
-IFS=":" read -ra DIRS <<< "$PATH"; count=0; for dir in "${DIRS[@]}"; do [ -d "$dir" ] && ((count++)); done; echo "$count"
+echo $PATH | tr ':' '\n' | grep -c '^'
