@@ -1,0 +1,2 @@
+#!/bin/bash
+echo $(( $(echo $WATER | tr '[:lower:]' '[:upper:]' | tr 'A-Z' '5-90A-Fe-f') + $(echo $STIR | tr '[:lower:]' '[:upper:]' | tr 'A-Z' '5-90A-Fe-f') )) | tr '[:upper:]' '[:lower:]' | tr '5-90a-f' '0123456789abcdef'
