@@ -1,0 +1,2 @@
+#!/bin/bash
+DECIMAL=$((2 ** POWER#$BINARY / DIVIDE#$BINARY)) echo $DECIMAL
