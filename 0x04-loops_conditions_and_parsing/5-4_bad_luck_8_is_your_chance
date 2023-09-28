@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
-# This script displays dif loop iteration.
+# displays Best School 10 times.
 
-count=1
-while [ "$count" -le 10 ]; do
-  if [ "$count" -eq 4 ]; then
-    echo "Bad Luck"
-  elif [ "$count" -eq 8 ]; then
-    echo "Good Luck"
-  else
-    echo "Best School"
-  fi
-  count=$((count + 1))
+COUNTER=1
+while [ $COUNTER -lt 11 ]
+do
+    if [ $COUNTER = 4 ]
+    then
+        echo "bad luck"
+    elif [ $COUNTER = 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    let COUNTER+=1
 done
