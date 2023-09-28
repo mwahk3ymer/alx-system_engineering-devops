@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script displays different messages based on the loop iteration.
+# This script displays dif loop iteration.
 
 count=1
 while [ "$count" -le 10 ]; do
