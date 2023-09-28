@@ -2,14 +2,8 @@
 # This script creates a fictional story for each user in /etc/passwd.
 
 # Define the path to the passwd file
-passwd_file="/etc/passwd"
-
-# Use a while loop to read the passwd file line by line
-while IFS=: read -r username _ userid groupid _ home_directory shell; do
-  # Generate a fictional story for each user
-  echo "The user $username is part of the $groupid gang,"
-  echo "lives in $home_directory and rides $shell."
-  echo "USER ID's place is protected by the passcode $userid,"
-  echo "more info about the user here: $username INFO"
-  echo  # Add an empty line for separation
-done < "$passwd_file"
+input="/etc/passwd"
+while IFS=: read -r f1 f2 f3 f4 f5 f6 f7
+do
+    echo "The user $f1 is part of the $f4 gang, lives in $f6 and rides $f7. $f3's place is protected by the passcode $f2, more info about the user here: $f5"
+done < "$input"
