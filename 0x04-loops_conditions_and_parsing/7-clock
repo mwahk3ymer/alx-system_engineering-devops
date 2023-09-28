@@ -3,19 +3,14 @@
 
 # Initialize hour and minute counters
 hour=0
-minute=1
-
-# Use a while loop to iterate through hours and minutes
-while [ "$hour" -le 12 ]; do
-  while [ "$minute" -le 59 ]; do
-    # Display the time in HH:MM format
-    printf "%02d:%02d\n" "$hour" "$minute"
-    
-    # Increment the minute counter
-    minute=$((minute + 1))
-  done
-  
-  # Increment the hour counter and reset the minute counter
-  hour=$((hour + 1))
-  minute=1
-done | head -n 70
+while [ "$hour" -lt 13 ];
+do
+	echo "Hour: $HOURS"
+    	MINUTES=1
+    	while [ $MINUTES -lt 60 ]
+    	do
+        	echo $MINUTES
+		let MINUTES+=1
+    	done
+    	let HOURS+=1
+done
