@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script searches for lines containing the word "bash" to find the PID.
+
+# Disable ShellCheck warning about using grep in a subshell
+# shellcheck disable=SC2009
+ps aux | grep -E '[b]ash'
