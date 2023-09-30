@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script displays a list of currently running processes with process hierarchy.
+
+# Using the ps command to list all processes, including those without a TTY,
+# in a user-oriented format with process hierarchy
+ps aux --forest
