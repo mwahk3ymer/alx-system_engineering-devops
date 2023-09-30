@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script displays "To infinity and beyond indefinitely" with a 2-second pause.
+# This script displays ith a 2-second pause.
 
 while true; do
     echo "To infinity and beyond indefinitely"
