@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # This script displays ith a 2-second pause.
 
-while true; do
+while true;
+
+do
     echo "To infinity and beyond indefinitely"
+
     sleep 2
 done
