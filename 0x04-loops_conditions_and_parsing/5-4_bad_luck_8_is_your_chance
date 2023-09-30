@@ -1,19 +1,15 @@
 #!/usr/bin/env bash
-# This script displays different messages based on the loop iteration.
+#more while if stuff
 
-# Initialize a counter
 count=1
-
-# Use a while loop to iterate from 1 to 10
-while [ "$count" -le 10 ]; do
-  if [ "$count" -eq 4 ]; then
-    echo "Bad Luck"
-  elif [ "$count" -eq 8 ]; then
-    echo "Good Luck"
-  else
-    echo "Best School"
-  fi
-  
-  # Increment the counter
-  count=$((count + 1))
+while [ $count -ne 11 ]
+do
+    if [ $count -eq 4 ]; then
+	echo "bad luck"
+    elif [ $count -eq 8 ]; then
+	echo "good luck"
+    else
+	echo "Best School"
+    fi
+    ((count++))
 done

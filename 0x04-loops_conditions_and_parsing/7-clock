@@ -5,17 +5,14 @@
 hour=0
 minute=1
 
-# Use a while loop to iterate through hours and minutes
-while [ "$hour" -le 12 ]; do
-  while [ "$minute" -le 59 ]; do
-    # Display the time in HH:MM format
-    printf "%02d:%02d\n" "$hour" "$minute"
+while [ $hour -le 12 ]; do
+    echo "Hour: $hour"
     
-    # Increment the minute counter
-    minute=$((minute + 1))
-  done
-  
-  # Increment the hour counter and reset the minute counter
-  hour=$((hour + 1))
-  minute=1
-done | head -n 70
+    while [ $minute -le 59 ]; do
+        echo $minute
+        minute=$((minute+1))
+    done
+    
+    hour=$((hour+1))
+    minute=1
+done
