@@ -1,28 +1,8 @@
-#!/bin/bash
-
-# Update the package list
+#!/usr/bin/env bash
+# Installs, configures, and starts the server
+# Imanol Asolo
 sudo apt-get update
-
-# Install nginx
 sudo apt-get install -y nginx
-
-# Start nginx (it may start automatically, but this ensures it's running)
+sudo chown -R ubuntu /var/www
+echo "Hello World" > /var/www/html/index.nginx-debian.html
 sudo service nginx start
-
-# Create a default Nginx configuration file
-echo "server {
-    listen 80;
-    server_name localhost;
-
-    location / {
-        echo 'Hello World!';
-        root /var/www/html;
-        index index.html;
-    }
-}" | sudo tee /etc/nginx/sites-available/default
-
-# Reload Nginx to apply the new configuration
-sudo service nginx reload
-
-# Output a message indicating successful configuration
-echo "Nginx installed and configured. Server is now listening on port 80."
