@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Installs, configures, and starts the server with redirection and custom 404 page
+
+# Update the package list
+sudo apt-get update
+
+# Install nginx
+sudo apt-get install -y nginx
+
+# Start nginx (it may start automatically, but this ensures it's running)
+sudo service nginx start
+
+# Create a default Nginx configuration file
+echo "server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        echo 'Hello World!';
+        root /var/www/html;
+        index index.html;
+    }
+
+    location /redirect_me {
+        return 301 http://www.example.com/redirected_page;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+        root /var/www/html;
+        internal;
+        echo 'Ceci n'est pas une page';
+    }
+}" | sudo tee /etc/nginx/sites-available/default
+
+# Reload Nginx to apply the new configuration
+sudo service nginx reload
+
+# Output a message indicating successful configuration
+echo "Nginx installed and configured. Server is now listening on port 80 with redirection and custom 404 page."
