@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #command to creat ssh
-ssh -i ~/.ssh/school ubuntu@server1
+ssh -i ~/.ssh/school ubuntu@307320-web-01
