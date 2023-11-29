@@ -1,4 +1,5 @@
-nstalls, configures, and starts the server with redirection and custom 404 page
+#!/usr/bin/env bash
+# Installs, configures, and starts the server with redirection and custom 404 page
 
 # Update the package list
 sudo apt-get update
