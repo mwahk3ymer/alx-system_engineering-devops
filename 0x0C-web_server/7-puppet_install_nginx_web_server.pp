@@ -1,40 +1,6 @@
-# File: nginx_config.pp
+# Installs a Nginx server
 
-# Install Nginx package
-package { 'nginx':
-  ensure => installed,
-}
-
-# Start and enable Nginx service
-service { 'nginx':
-  ensure  => running,
-  enable  => true,
-  require => Package['nginx'],
-}
-
-# Define default Nginx configuration
-file { '/etc/nginx/sites-available/default':
-  content => "server {
-    listen 80;
-    server_name localhost;
-
-    location / {
-        echo 'Hello World!';
-        root /var/www/html;
-        index index.html;
-    }
-
-    location /redirect_me {
-        return 301 http://www.example.com/redirected_page;
-    }
-}",
-  require => Package['nginx'],
-  notify  => Service['nginx'],
-}
-
-# Reload Nginx to apply the new configuration
-exec { 'nginx_reload':
-  command     => 'service nginx reload',
-  refreshonly => true,
-  subscribe   => File['/etc/nginx/sites-available/default'],
+exec {'install':
+  provider => shell,
+  command  => 'sudo apt-get -y update ; sudo apt-get -y install nginx ; echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html ; sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/kwamboka1 permanent;/" /etc/nginx/sites-available/default ; sudo service nginx start',
 }
