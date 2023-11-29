@@ -17,7 +17,7 @@ echo "Hello World!" > /usr/share/nginx/html/index.html
 # Check if Nginx is running
 if pgrep -x "nginx" >/dev/null
 then
-	    echo "Nginx installed and configured successfully!"
-    else
-	        echo "Failed to install or configure Nginx!"
+    echo "Nginx installed and configured successfully!"
+else
+    echo "Failed to install or configure Nginx!"
 fi
