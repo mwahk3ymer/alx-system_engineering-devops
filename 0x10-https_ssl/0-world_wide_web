@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Script for auditing subdomains of a domain
+
+# Function to display information about a subdomain
+display_info() {
+    local subdomain="$1"
+    local record_type="$2"
+    local destination="$3"
+    echo "The subdomain $subdomain is a $record_type record and points to $destination"
+}
+
+# Main script
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
+fi
+
+domain="$1"
+subdomain="${2:-www}"
+
+case "$subdomain" in
+    www)
+        display_info "$subdomain" "CNAME" "lb-01 IP"
+        ;;
+    lb-01)
+        display_info "$subdomain" "A" "lb-01 IP"
+        ;;
+    web-01)
+        display_info "$subdomain" "A" "web-01 IP"
+        ;;
+    web-02)
+        display_info "$subdomain" "A" "web-02 IP"
+        ;;
+    *)
+        echo "Unknown subdomain: $subdomain"
+        exit 1
+        ;;
+esac
+
+exit 0
