@@ -1,0 +1,8 @@
+cp: cannot create regular file '/etc/nginx/nginx.conf.bak': Permission denied
+./0-nginx_likes_port_80: line 18: netstat: command not found
+sed: couldn't open temporary file /etc/nginx/sedEch0IA: Permission denied
+Nginx configuration updated to listen on port 80.
+Failed to restart nginx.service: Access denied
+See system logs and 'systemctl status nginx.service' for details.
+./0-nginx_likes_port_80: line 30: netstat: command not found
+Failed to configure Nginx to listen on port 80. Please check the Nginx logs for any errors.
