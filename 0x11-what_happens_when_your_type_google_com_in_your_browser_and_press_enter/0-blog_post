@@ -1,0 +1,33 @@
+Demesrifying the web
+
+Introduction:
+
+In the vast world of the internet, every time you type a URL into your browser and hit Enter, a complex orchestration of events takes place behind the scenes to deliver the web page you requested. In this blog post, we'll unravel the layers of this process, from the initial DNS request to the final rendering of the web page.
+
+DNS Request:
+The journey begins with the Domain Name System (DNS) request. When you type "https://www.google.com" into your browser, it needs to translate the human-readable domain name ("www.google.com") into an IP address, which is the unique identifier of the server hosting Google's website. The DNS server plays a crucial role in this translation, helping your browser locate the server's IP address.
+
+TCP/IP:
+With the IP address in hand, your browser initiates a connection using the Transmission Control Protocol (TCP) and the Internet Protocol (IP). TCP ensures reliable data transfer by breaking it into packets and managing their delivery, while IP handles the addressing and routing of these packets across the internet.
+
+Firewall:
+As the data packets traverse the internet, they may encounter firewalls, which act as a barrier to unauthorized access. Firewalls monitor and control incoming and outgoing network traffic based on predetermined security rules. Ensuring secure passage through firewalls is essential for a seamless browsing experience.
+
+HTTPS/SSL:
+Security is paramount on the internet, and this is where HTTPS (Hypertext Transfer Protocol Secure) comes into play. The 'S' in HTTPS stands for secure, indicating that the communication between your browser and the server is encrypted. This is achieved through SSL (Secure Sockets Layer) or its successor, TLS (Transport Layer Security), adding an extra layer of protection against malicious activities like data interception.
+
+Load-Balancer:
+For high-traffic websites like Google, a single server might not be sufficient to handle all incoming requests. Load balancers distribute the incoming traffic across multiple servers, ensuring optimal resource utilization and preventing any single server from being overwhelmed. This enhances the website's performance, scalability, and reliability.
+
+Web Server:
+Upon reaching the appropriate server, the web server takes over. It processes the HTTP/HTTPS requests received from your browser, retrieves the requested web page or resources, and sends them back to your browser. Popular web servers include Apache, Nginx, and Microsoft IIS.
+
+Application Server:
+In some cases, web servers delegate dynamic content generation to application servers. These servers execute server-side scripts, handle database queries, and generate the dynamic content to be displayed on the web page. Common application servers include Tomcat, Flask, and Express.js.
+
+Database:
+For websites with dynamic content, a database is often involved. The application server interacts with the database to fetch and update information as needed. This interaction ensures that the web page you see is always up-to-date and reflects the most recent data.
+
+Conclusion:
+
+The journey from typing "https://www.google.com" to seeing the Google homepage is a fascinating interplay of technologies and systems. Understanding this process not only enhances your appreciation for the intricacies of the web but also provides valuable insights for anyone working in software engineering or related fields. As you continue to explore the realms of web development, these foundational concepts will serve as your guide in creating robust, secure, and high-performing applications.
