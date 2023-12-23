@@ -1,0 +1,24 @@
+ Resolution:
+
+Browser initiates a DNS request to translate "www.google.com" into an IP address.
+Request to Server IP on Appropriate Port:
+
+Browser establishes a TCP connection with the server's IP address on the appropriate port (usually port 443 for HTTPS).
+Encrypted Traffic (HTTPS):
+
+SSL/TLS encryption ensures secure communication between the browser and the server.
+Firewall:
+
+Data packets pass through a firewall, which monitors and controls incoming and outgoing traffic based on security rules.
+Load Balancer:
+
+If applicable (for high-traffic sites), a load balancer distributes incoming requests across multiple servers for optimal resource utilization.
+Web Server:
+
+The web server processes HTTP/HTTPS requests, retrieves requested resources, and sends them back to the browser.
+Application Server:
+
+In cases of dynamic content, the application server generates the web page. It may also handle server-side scripts.
+Database:
+
+The application server communicates with the database to retrieve or update data as needed.
