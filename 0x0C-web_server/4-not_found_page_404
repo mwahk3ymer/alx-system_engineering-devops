@@ -1,40 +1,25 @@
 #!/usr/bin/env bash
-# Installs, configures, and starts the server with redirection and custom 404 page
+# Customizing a 404-error_page
 
-# Update the package list
+# Updating Packages before performing installations
 sudo apt-get update
-
-# Install nginx
 sudo apt-get install -y nginx
 
-# Start nginx (it may start automatically, but this ensures it's running)
-sudo service nginx start
+# Creating an index.html page
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Create a default Nginx configuration file
-echo "server {
-    listen 80;
-    server_name localhost;
+# Performing a "moved permanently redirection" (301)
+new_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/evahaudi permanent;"
+sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/default
 
-    location / {
-        echo 'Hello World!';
-        root /var/www/html;
-        index index.html;
-    }
+# Creating a 404 Custom error page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+new_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
 
-    location /redirect_me {
-        return 301 http://www.example.com/redirected_page;
-    }
+sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-enabled/default
 
-    error_page 404 /404.html;
-    location = /404.html {
-        root /var/www/html;
-        internal;
-        echo 'Ceci n'est pas une page';
-    }
-}" | sudo tee /etc/nginx/sites-available/default
+# Testing configurations for syntax errors
+sudo nginx -t
 
-# Reload Nginx to apply the new configuration
-sudo service nginx reload
-
-# Output a message indicating successful configuration
-echo "Nginx installed and configured. Server is now listening on port 80 with redirection and custom 404 page."
+# restart nginx after implementing changes
+sudo service nginx restart

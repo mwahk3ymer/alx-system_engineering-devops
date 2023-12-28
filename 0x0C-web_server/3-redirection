@@ -1,33 +1,16 @@
 #!/usr/bin/env bash
-# Installs, configures, and starts the server with redirection
+#  A Script that configures a new Ubuntu machine to Perform a 301-redirection
 
-# Update the package list
+# Upadating Packages before Installations
 sudo apt-get update
-
-# Install nginx
 sudo apt-get install -y nginx
 
-# Start nginx (it may start automatically, but this ensures it's running)
-sudo service nginx start
+# Creating an index.html page
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Create a default Nginx configuration file
-echo "server {
-    listen 80;
-    server_name localhost;
+# Performing a 301 Redirection
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/evahaudi permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-    location / {
-        echo 'Hello World!';
-        root /var/www/html;
-        index index.html;
-    }
-
-    location /redirect_me {
-        return 301 http://www.example.com/redirected_page;
-    }
-}" | sudo tee /etc/nginx/sites-available/default
-
-# Reload Nginx to apply the new configuration
-sudo service nginx reload
-
-# Output a message indicating successful configuration
-echo "Nginx installed and configured. Server is now listening on port 80 with redirection."
+# Restarting Nginx service
+sudo service nginx restart
