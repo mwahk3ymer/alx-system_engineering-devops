@@ -1,15 +1,14 @@
-#!/usr/bin/python3
-"""
-Script that starts a Flask web application
-"""
-from flask import Flask
+# This manuscript increases the amount of traffic an Nginx server can handle
 
-app = Flask(__name__)
+# Increase the ULIMIT of the default file
+file { 'fix-for-nginx':
+  ensure  => 'file',
+  path    => '/etc/default/nginx',
+  content => inline_template('<%= File.read("/etc/default/nginx").gsub(/15/, "4096") %>'),
+}
 
-@app.route('/airbnb-onepage/', strict_slashes=False)
-def hello():
-    """Returns a response for the route /airbnb-onepage/"""
-    return 'Hello HBNB!'
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+# Restart Nginx
+-> exec { 'nginx-restart':
+  command => 'nginx restart',
+  path    => '/etc/init.d/',
+}
